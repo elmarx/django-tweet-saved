@@ -30,34 +30,31 @@ How to use it
 1. Install, add *tweet* to your ``INSTALLED_APPS``.
 
 2. get the *oauth* token/secret and add it to your *settings.py*:
-    <pre><code>
-    $ ./manage.py tweet_oauth
-    Hi there! We're gonna get you all set up to use tweet_saved.
 
-    In the web browser window that opens please choose to Allow
-    access. Copy the PIN number that appears on the next page and paste or
-    type it here:
+        $ ./manage.py tweet_oauth
+        Hi there! We're gonna get you all set up to use tweet_saved.
 
-    Please enter the PIN: 1234567
-    Please add
-    TWEET_SAVED_OAUTH_TOKEN = 'xxxxxxxxx'
-    TWEET_SAVED_OAUTH_TOKEN_SECRET = 'xxxx'
-    to your settings.py
-    </code></pre>
+        In the web browser window that opens please choose to Allow
+        access. Copy the PIN number that appears on the next page and paste or
+        type it here:
+
+        Please enter the PIN: 1234567
+        Please add
+        TWEET_SAVED_OAUTH_TOKEN = 'xxxxxxxxx'
+        TWEET_SAVED_OAUTH_TOKEN_SECRET = 'xxxx'
+        to your settings.py
 
 3. Register your model
-    <pre><code>
 
-    ...
-    from tweet import tweeter
-
-    class MyModel(models.model):
         ...
+        from tweet import tweeter
 
-    tweeter.register(MyModel)
-    </pre></code>
+        class MyModel(models.model):
+            ...
 
-4. if not present, add a [method get_absolute_url](http://docs.djangoproject.com/en/dev/ref/models/instances/#get-absolute-url
+        tweeter.register(MyModel)
+
+4. if not present, add a method [get_absolute_url](http://docs.djangoproject.com/en/dev/ref/models/instances/#get-absolute-url
  "Django documentation on get-absolute-url")
  to your model.
 
@@ -69,26 +66,21 @@ How to use it
 
     This is the ``twitter_message`` of my object, augmented with hashtags
     (using the tags from django-tagging)
-    <pre><code>
-    @property
-    def twitter_message(self):
-        reo = re.compile('(%s)' % '|'.join([x.name for x in self.tag_objects]), flags=re.IGNORECASE)
-        return 'Blog: ' + re.sub(reo, '#\g<1>', self.headline)
-    </pre></code>
+
+        @property
+        def twitter_message(self):
+            reo = re.compile('(%s)' % '|'.join([x.name for x in self.tag_objects]), flags=re.IGNORECASE)
+            return 'Blog: ' + re.sub(reo, '#\g<1>', self.headline)
 
     Add a method ``may_tweet`` returning a bool, if you want to delay the tweet,
     i.e. wait until the object is marked as public.
 
     Example:
-    <pre>
-    <code>
-    def may_tweet(self):
-        return self.published is not None and self.published.date() < datetime.date.today()
-    </code>
-    </pre>
 
-    6. If you want to keep track of the shortened urls, get a Google/Googl key,
-    and add it to your *settings.py*
+        def may_tweet(self):
+            return self.published is not None and self.published.date() < datetime.date.today()
+
+6. If you want to keep track of the shortened urls, get a Google/Googl key, and add it to your *settings.py*
 
     ``GOOGL_KEY = 'xxxx'``
 
