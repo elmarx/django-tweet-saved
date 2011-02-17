@@ -9,7 +9,7 @@ except exceptions.ImportError:
 setup(name="django-tweet-saved",
       author="Elmar Athmer",
       author_email="elmar@nixus-minimax.de",
-      url="https://github.com/zauberpony/tweet_saved",
+      url="https://github.com/zauberpony/django-tweet-saved",
       version='0.8',
       packages=['tweet'],
       install_requires=[
