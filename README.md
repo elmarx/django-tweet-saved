@@ -1,4 +1,4 @@
-tweet-saved
+django-tweet-saved
 ===========
 
 What does it do?
@@ -21,8 +21,11 @@ Prerequisites
 
 I developed and tested this app (only) using Python 2.6 and Django trunk (1.3-beta atm).
 
-If I did the setup.py correctly, *python-googl* and *twitter* should get
-installed with this package.
+Unfortunately *[python-googl](http://code.google.com/p/python-googl/source/checkout)*
+seems to be broken/uninstallable in pypi, so you might need to it it manually:
+``pip install hg+https://python-googl.googlecode.com/hg/``
+
+*twitter* should get installed with this package.
 
 How to use it
 -------------
