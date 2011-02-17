@@ -10,8 +10,8 @@ setup(name="django-tweet-saved",
       author="Elmar Athmer",
       author_email="elmar@nixus-minimax.de",
       url="https://github.com/zauberpony/django-tweet-saved",
-      version='0.8',
-      packages=['tweet', 'tweet.migrations'],
+      version='0.8.1',
+      packages=['tweet', 'tweet.migrations', 'tweet.management', 'tweet.management.commands'],
       install_requires=[
               'twitter',
               'python-googl'
