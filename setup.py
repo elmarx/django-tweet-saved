@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(name='tweet_saved',
-        version='0.1',
+        version='0.8',
         packages=['tweet'],
         install_requires=[
                 'twitter',
