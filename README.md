@@ -65,7 +65,7 @@ How to use it
     If this method is not defined, the object is simply converted to string.
 
     This is the ``twitter_message`` of my object, augmented with hashtags
-    (using the tags from django-tagging)
+    (using the tags from *django-tagging*):
 
         @property
         def twitter_message(self):
