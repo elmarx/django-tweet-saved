@@ -12,7 +12,8 @@ CONSUMER_SECRET = 'xoVDPK59kscew67NYLe8Yw8FToaUhDYBP3Yj6fKwE'
 TWITTER_LENGTH = getattr(settings, 'TWITTER_LENGTH', 140)
 
 def register(instance):
-    post_save.connect(receiver=tweet, sender=instance)
+    if getattr(settings, 'TWEET_SAVED', True):
+        post_save.connect(receiver=tweet, sender=instance)
 
 def tweet(sender, instance, **kwargs):
     if not hasattr(instance, 'may_tweet') or instance.may_tweet():
